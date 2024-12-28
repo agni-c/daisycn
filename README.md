@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DaisyCN UI
+
+A Next.js starter template that combines the robust components of ShadcnUI with the beautiful theming system of DaisyUI.
+
+## Features
+
+- 🎨 30+ Built-in themes from DaisyUI
+- 🧱 Robust components from ShadcnUI
+- 🌗 Dark mode support
+- ⚡ Built with Next.js 14, TypeScript, and Tailwind CSS
+- 📱 Responsive design
+- 🔄 Theme persistence
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
+```
+
+Then, run the development server:
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How It Works
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This template combines ShadcnUI's component system with DaisyUI's theming by:
 
-## Learn More
+1. Mapping DaisyUI color variables to ShadcnUI's expected CSS variables
+2. Using a custom theme provider that handles both libraries
+3. Maintaining compatibility with both systems
 
-To learn more about Next.js, take a look at the following resources:
+### Key Files
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `tailwind.config.ts`: Configuration that combines both systems
+- `src/app/globals.css`: CSS variable mapping
+- `src/components/theme-provider.tsx`: Theme management
+- `src/components/theme-switcher.tsx`: UI for theme switching
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Color Mapping
 
-## Deploy on Vercel
+DaisyUI's color variables are mapped to ShadcnUI's expected variables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```css
+--background: hsl(var(--b1))        /* DaisyUI base-100 */
+--foreground: hsl(var(--bc))        /* DaisyUI base-content */
+--primary: hsl(var(--p))            /* DaisyUI primary */
+--primary-foreground: hsl(var(--pc)) /* DaisyUI primary-content */
+/* ... and so on */
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Available Themes
+
+All DaisyUI themes are available out of the box:
+- light
+- dark
+- cupcake
+- bumblebee
+- emerald
+- corporate
+- synthwave
+- retro
+- cyberpunk
+- valentine
+- halloween
+- garden
+- forest
+- aqua
+- lofi
+- pastel
+- fantasy
+- wireframe
+- black
+- luxury
+- dracula
+- cmyk
+- autumn
+- business
+- acid
+- lemonade
+- night
+- coffee
+- winter
+
+## Usage
+
+1. Import ShadcnUI components as usual
+2. Use the ThemeSwitcher component to change themes
+3. All components will automatically adapt to the selected theme
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { ThemeSwitcher } from "@/components/theme-switcher"
+
+export default function Page() {
+  return (
+    <div>
+      <ThemeSwitcher />
+      <Button>I adapt to the theme!</Button>
+    </div>
+  )
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT License
